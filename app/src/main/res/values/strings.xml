@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SlotMachine</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="prize_coffee">You get a free coffee</string>
+    <string name="prize_tea">You get a free tea</string>
+    <string name="prize_espresso">You get a free espresso</string>
+    <string name="congratulations_header">Congratulations!!</string>
+</resources>
