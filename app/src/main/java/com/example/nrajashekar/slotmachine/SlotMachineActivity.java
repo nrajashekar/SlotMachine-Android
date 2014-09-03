@@ -29,10 +29,17 @@ import java.util.Random;
 
 
 public class SlotMachineActivity extends FragmentActivity {
+
+    private static final int MAX_SPEED = 30;
+    private static final int MIN_SPEED = 20;
+    private static final int MAX_ROLLS = 20;
+    private static final int MIN_ROLLS = 10;
+    private static final int MAX_ROLL_DELAY_FACTOR = 30;
+    private static final int MIN_ROLL_DELAY_FACTOR = 20;
+
     private ViewFlipper reel1;
     private ViewFlipper reel2;
     private ViewFlipper reel3;
-    private GestureDetector mDetector;
     private int mSpeed1;
     private int mSpeed2;
     private int mSpeed3;
@@ -54,15 +61,15 @@ public class SlotMachineActivity extends FragmentActivity {
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mSpeed1 = generateRandomNumber(30, 20);
-                mSpeed2 = generateRandomNumber(30, 20);
-                mSpeed3 = generateRandomNumber(30, 20);
+                mSpeed1 = generateRandomNumber(MAX_SPEED, MIN_SPEED);
+                mSpeed2 = generateRandomNumber(MAX_SPEED, MIN_SPEED);
+                mSpeed3 = generateRandomNumber(MAX_SPEED, MIN_SPEED);
 
-                mCount1 = generateRandomNumber(20, 10);
-                mCount2 = generateRandomNumber(20, 10);
-                mCount3 = generateRandomNumber(20, 10);
+                mCount1 = generateRandomNumber(MAX_ROLLS, MIN_ROLLS);
+                mCount2 = generateRandomNumber(MAX_ROLLS, MIN_ROLLS);
+                mCount3 = generateRandomNumber(MAX_ROLLS, MIN_ROLLS);
 
-                mFactor = generateRandomNumber(30, 20);
+                mFactor = generateRandomNumber(MAX_ROLL_DELAY_FACTOR, MIN_ROLL_DELAY_FACTOR);
                 Handler h = new Handler();
                 h.postDelayed(r1, mSpeed1);
                 h.postDelayed(r2, mSpeed2);
@@ -167,14 +174,6 @@ public class SlotMachineActivity extends FragmentActivity {
     }
 
     private void roll(ViewFlipper viewFlipper, int speed) {
-        Log.d("count 1", new Integer(mCount1).toString());
-        Log.d("count 2", new Integer(mCount2).toString());
-        Log.d("count 3", new Integer(mCount3).toString());
-
-        Log.d("speed 1", new Integer(mSpeed1).toString());
-        Log.d("speed 2", new Integer(mSpeed2).toString());
-        Log.d("speed 3", new Integer(mSpeed3).toString());
-
         Animation outToBottom = new TranslateAnimation(
                 Animation.RELATIVE_TO_PARENT, 0.0f,
                 Animation.RELATIVE_TO_PARENT, 0.0f,
